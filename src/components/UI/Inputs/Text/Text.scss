@@ -1,0 +1,9 @@
+@import '../../../../sass/abstracts/abstracts';
+
+.input {
+    margin-bottom: $spacing-primary;
+
+    label {
+        display: block;
+    }
+}
