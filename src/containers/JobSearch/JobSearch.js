@@ -5,10 +5,15 @@ import InputDate from '../../components/UI/Inputs/Date/Date';
 import InputText from '../../components/UI/Inputs/Text/Text';
 import InputRadio from '../../components/UI/Inputs/Radio/Radio';
 import Button from '../../components/UI/Buttons/Button';
+import JobDisplay from '../JobDisplay/JobDisplay';
+import Job from '../../components/Job/Job';
 
 class JobSearch extends Component {
 
     state = {
+        dateMonth: '',
+        dateDay: '',
+        dateYear: '',
         company: '',
         jobTitle: '',
         jobLink: '',
@@ -34,13 +39,22 @@ class JobSearch extends Component {
         console.log(this.state.jobStatus);
         console.log(this.state.recruiterName);
         console.log(this.state.recruiterAgency);
+        console.log(this.state.dateMonth);
+        console.log(this.state.dateDay);
+        console.log(this.state.dateYear);
     }
 
     render() {
+        const tempStyles = {
+            display: 'inline-block',
+            width: '40%',
+            verticalAlign: 'top'
+        };
+
         return (
             <Aux>
                 <h1>Job Search</h1>
-                <form onChange={this.changeHandler}>
+                <form onChange={this.changeHandler} style={tempStyles}>
                     <InputDate />
                     <InputText
                         label="Company"
@@ -54,20 +68,6 @@ class JobSearch extends Component {
                         label="Job Link"
                         type="text"
                         id="jobLink" />
-                    <div>
-                        <div>Did you use a recruiter?</div>
-                        <InputRadio
-                            label="No"
-                            name="recruiter"
-                            id="recruiterNo"
-                            value="no"
-                            checked={true} />
-                        <InputRadio
-                            label="Yes"
-                            name="recruiter"
-                            id="recruiterYes"
-                            value="yes" />
-                    </div>
                     <InputText
                         label="Location"
                         type="text"
@@ -96,6 +96,20 @@ class JobSearch extends Component {
                             id="jobStatusOffer"
                             value="offer" />
                     </div>
+                    <div>
+                        <div>Did you use a recruiter?</div>
+                        <InputRadio
+                            label="No"
+                            name="recruiter"
+                            id="recruiterNo"
+                            value="no"
+                            checked={true} />
+                        <InputRadio
+                            label="Yes"
+                            name="recruiter"
+                            id="recruiterYes"
+                            value="yes" />
+                    </div>
                     <InputText
                         label="Recruiter Name"
                         type="text"
@@ -108,6 +122,22 @@ class JobSearch extends Component {
                     <Button
                         addJob={this.submitHandler}>Add Job</Button>
                 </form>
+
+                <div style={tempStyles}>
+                    <JobDisplay>
+                        <Job
+                            company={this.state.company}
+                            jobTitle={this.state.jobTitle}
+                            jobLink={this.state.jobLink}
+                            jobStatus={this.state.jobStatus}
+                            recruiter={this.state.recruiter}
+                            recruiterName={this.state.recruiterName}
+                            recruiterAgency={this.state.recruiterAgency}
+                            month={this.state.dateMonth}
+                            day={this.state.dateDay}
+                            year={this.state.dateYear} />
+                    </JobDisplay>
+                </div>
             </Aux>
         );
     }

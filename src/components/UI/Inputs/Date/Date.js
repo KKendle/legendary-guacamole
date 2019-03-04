@@ -12,19 +12,22 @@ const inputDate = (props) => {
                 <InputText 
                     id="dateMonth"
                     label="Month"
-                    type="text" />
+                    type="text"
+                    name="dateMonth" />
             </div>
             <div>
                 <InputText
                     id="dateDay"
                     label="Day"
-                    type="text" />
+                    type="text"
+                    name="dateDay" />
             </div>
             <div>
                 <InputText
                     id="dateYear"
                     label="Year"
-                    type="text" />
+                    type="text"
+                    name="dateYear" />
             </div>
         </Aux>
     );
