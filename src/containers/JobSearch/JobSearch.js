@@ -12,11 +12,11 @@ class JobSearch extends Component {
         company: '',
         jobTitle: '',
         jobLink: '',
+        recruiter: '',
         jobLocation: '',
+        jobStatus: '',
         recruiterName: '',
-        recruiterAgency: '',
-        sampleOne: '',
-        sampleTwo: ''
+        recruiterAgency: ''
     }
 
     changeHandler = (event) => {
@@ -29,84 +29,82 @@ class JobSearch extends Component {
         console.log(this.state.company);
         console.log(this.state.jobTitle);
         console.log(this.state.jobLink);
+        console.log(this.state.recruiter);
         console.log(this.state.jobLocation);
+        console.log(this.state.jobStatus);
         console.log(this.state.recruiterName);
         console.log(this.state.recruiterAgency);
-        console.log(this.state.sampleOne);
-        console.log(this.state.sampleTwo);
     }
 
     render() {
         return (
             <Aux>
                 <h1>Job Search</h1>
-                <form>
+                <form onChange={this.changeHandler}>
                     <InputDate />
                     <InputText
                         label="Company"
                         type="text"
-                        id="company"
-                        changed={this.changeHandler} />
+                        id="company" />
                     <InputText
                         label="Job Title"
                         type="text"
-                        id="jobTitle"
-                        changed={this.changeHandler} />
+                        id="jobTitle" />
                     <InputText
                         label="Job Link"
                         type="text"
-                        id="jobLink"
-                        changed={this.changeHandler} />
+                        id="jobLink" />
                     <div>
                         <div>Did you use a recruiter?</div>
                         <InputRadio
                             label="No"
-                            group="recruiter"
+                            name="recruiter"
                             id="recruiterNo"
+                            value="no"
                             checked={true} />
                         <InputRadio
                             label="Yes"
-                            group="recruiter"
-                            id="recruiterYes" />
+                            name="recruiter"
+                            id="recruiterYes"
+                            value="yes" />
                     </div>
                     <InputText
                         label="Location"
                         type="text"
-                        id="jobLocation"
-                        changed={this.changeHandler} />
+                        id="jobLocation" />
                     <div>
                         <div>Status</div>
                         <InputRadio
                             label="Submitted"
-                            group="jobStatus"
+                            name="jobStatus"
                             id="jobStatusSubmitted"
+                            value="submitted"
                             checked={true} />
                         <InputRadio
                             label="Interviewing"
-                            group="jobStatus"
-                            id="jobStatusInterviewing" />
+                            name="jobStatus"
+                            id="jobStatusInterviewing"
+                            value="interviewing" />
                         <InputRadio
                             label="Awaiting Response"
-                            group="jobStatus"
-                            id="jobStatusAwatingResponse" />
+                            name="jobStatus"
+                            id="jobStatusAwatingResponse"
+                            value="awaiting response" />
                         <InputRadio
                             label="Offer"
-                            group="jobStatus"
-                            id="jobStatusOffer" />
+                            name="jobStatus"
+                            id="jobStatusOffer"
+                            value="offer" />
                     </div>
                     <InputText
                         label="Recruiter Name"
                         type="text"
-                        id="recruiterName"
-                        changed={this.changeHandler} />
+                        id="recruiterName" />
                     <InputText
                         label="Recruiter Agency"
                         type="text"
-                        id="recruiterAgency"
-                        changed={this.changeHandler} />
+                        id="recruiterAgency" />
 
-                    <input type="text" name="sampleOne" onChange={this.changeHandler} />
-                    <input type="text" name="sampleTwo" onChange={this.changeHandler} />
                     <Button
                         addJob={this.submitHandler}>Add Job</Button>
                 </form>

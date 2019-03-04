@@ -5,8 +5,8 @@ const inputRadio = (props) => (
         <input 
             type="radio"
             id={props.id}
-            name={props.group}
-            value={props.labels}
+            name={props.name}
+            value={props.value}
             defaultChecked={props.checked ? "checked" : ""} />
         <label htmlFor={props.id}>{props.label}</label>
     </div>
